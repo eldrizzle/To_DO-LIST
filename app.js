@@ -7,6 +7,7 @@ const _ = require("lodash");
 const firebase = require("firebase");
 
 const app = express();
+// const port = process.env.PORT || 3000
 
 app.set('view engine', 'ejs');
 
@@ -136,11 +137,8 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-let port = process.env.PORT;
-if(port==null || port == ""){
-  port = 3000;
-}
-app.listen(port);
-app.listen(port, function() {
-  console.log("Server started successfully");
-});
+
+app.listen(process.env.PORT  || 3000, function(){
+  console.log("server started successfully");
+})
+
