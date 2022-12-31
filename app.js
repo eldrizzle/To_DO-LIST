@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-const firebase = require("firebase");
+// const firebase = require("firebase");
 
 const app = express();
 // const port = process.env.PORT || 3000
@@ -14,7 +14,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://rajat4661:Rajat%401598@cluster0.miqfkf3.mongodb.net/todolistDB", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost:27017/dolistDB", {useNewUrlParser: true  });
+
+mongoose.connect("mongodb+srv://rajat4661:Rajat1598@cluster0.ncboalk.mongodb.net/todolistDB" ,{useNewUrlParser:true})
 
 const itemsSchema = {
   name: String
@@ -137,8 +139,8 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-
-app.listen(process.env.PORT  || 3000, function(){
+var port = process.env.PORT || 3000;
+app.listen( port , function(){
   console.log("server started successfully");
 })
 
